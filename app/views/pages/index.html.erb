@@ -1,0 +1,10 @@
+<h1>Where Should You Vote?</h1>
+<%= form_for @user do |f| %>
+  <%= f.label :input_location, "Where are you?" %>
+  <%= f.text_field :input_location  %>
+
+  <%= f.check_box :gps_location %>
+  <%= f.label :gps_location, "Use GPS" %>
+  <br>
+  <%= f.submit %>
+<% end %>
