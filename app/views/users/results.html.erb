@@ -1,17 +1,18 @@
 <h1>Results</h1>
 
 These are the 5 polling locations closest to your location: (Latitude: <%= @user.latitude %>, Longitude: <%= @user.longitude %>) are:
-<br>
-<%= @user %>
 <br><br>
-Psuedocode<br>
-Polling_locations.near(cookies[:user_location][0], cookies[:user_location][1], 5) do |poll|<br>
-&nbsp;&nbsp;  poll.address<br>
-&nbsp;&nbsp;  poll.distance<br>
-&nbsp;&nbsp;  poll.driving_directions<br>
-&nbsp;&nbsp;  poll.waiting_time<br>
-end
-<br> <br>
+<ul>
+  <% @near_locations.each do |location| %>
+  <ul>
+    <li><strong>Name: </strong> <%= location.name %></li>
+    <li><strong>Address: </strong> <%= location.address %></li>
+    <li><strong>Hours: </strong> <%= location.hours %></li>
+    <li>Directions (create link)</li>
+    <li>Waiting_time</li>
+  </ul>
+  <% end %>
+</ul>
 
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>

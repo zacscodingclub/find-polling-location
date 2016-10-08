@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  street: MyText
+  cityStateZip: MyText
+  date: 2016-10-08 16:05:49
+  hours: MyText
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  name: MyText
+  street: MyText
+  cityStateZip: MyText
+  date: 2016-10-08 16:05:49
+  hours: MyText
+  latitude: 1.5
+  longitude: 1.5
