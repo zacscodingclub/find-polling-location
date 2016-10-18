@@ -1,7 +1,7 @@
 class PollingLocation < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
-  POLLING_LOCATIONS_URL = 'http://earlyvoting.jayhill.net/api/earlyvotinglocations'
+  POLLING_LOCATIONS_URL = 'http://earlyvoting.jayhill.net/api/locations'
 
   def self.get_current_locations(user)
     url = URI.parse(POLLING_LOCATIONS_URL)

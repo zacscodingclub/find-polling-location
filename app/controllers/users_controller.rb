@@ -18,11 +18,11 @@ class UsersController < ApplicationController
       if @user.latitude && @user.longitude
         redirect_to controller: 'users', action: 'results', uid: @user.id
       else
-        flash[:notice] = "Sorry about that, but something went wrong. Please try again."
+        flash[:danger] = "Sorry about that, but something went wrong. Please try again."
         render 'index'
       end
     else
-      flash[:notice] = "Please enter an address or select the GPS option."
+      flash[:danger] = "Please enter an address or select the GPS option."
       render 'index'
     end
   end

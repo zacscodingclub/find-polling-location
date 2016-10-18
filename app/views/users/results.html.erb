@@ -12,7 +12,7 @@ These are the 5 closest early polling locations to your location: (Latitude: <%=
         <div class="panel-body">
           <strong>Address: </strong> <%= location.address %><br>
           <strong>Hours: </strong> <%= location.hours %><br>
-          <strong>Current Wait Time:</strong><br>
+          <strong>Current Wait Time:</strong> <%= last_wait_time(location) %><br>
           <%= link_to "Driving Directions", driving_directions_link(@user, location), target:'_blank' %>
         </div>
       </div>
