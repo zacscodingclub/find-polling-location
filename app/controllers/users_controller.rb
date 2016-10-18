@@ -15,7 +15,12 @@ class UsersController < ApplicationController
       @user = User.new(current_location: user_params[:input_location] + ', Buncombe County, NC')
       @user.save
 
-      redirect_to controller: 'users', action: 'results', uid: @user.id
+      if @user.latitude && @user.longitude
+        redirect_to controller: 'users', action: 'results', uid: @user.id
+      else
+        flash[:notice] = "Sorry about that, but something went wrong. Please try again."
+        render 'index'
+      end
     else
       flash[:notice] = "Please enter an address or select the GPS option."
       render 'index'
@@ -24,7 +29,8 @@ class UsersController < ApplicationController
 
   def results
     @user = User.find(params[:uid])
-    locations = Location.all
+    PollingLocation.get_current_locations(@user)
+    locations = PollingLocation.where(uid: @user.id)
     @near_locations = locations.near(@user)[0..4]
   end
 

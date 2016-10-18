@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008200549) do
+ActiveRecord::Schema.define(version: 20161018005732) do
 
-  create_table "locations", force: :cascade do |t|
+  create_table "polling_locations", force: :cascade do |t|
     t.text     "name"
     t.text     "street"
     t.text     "cityStateZip"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20161008200549) do
     t.float    "longitude"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "uid"
   end
 
   create_table "users", force: :cascade do |t|

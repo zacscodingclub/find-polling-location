@@ -1,18 +1,22 @@
 <h1>Results</h1>
 
-These are the 5 polling locations closest to your location: (Latitude: <%= @user.latitude %>, Longitude: <%= @user.longitude %>) are:
+These are the 5 closest early polling locations to your location: (Latitude: <%= @user.latitude %>, Longitude: <%= @user.longitude %>) are:
 <br><br>
-<ul>
-  <% @near_locations.each do |location| %>
-  <ul>
-    <li><strong>Name: </strong> <%= location.name %></li>
-    <li><strong>Address: </strong> <%= location.address %></li>
-    <li><strong>Hours: </strong> <%= location.hours %></li>
-    <li>Directions (create link)</li>
-    <li>Waiting_time</li>
-  </ul>
+<div class="col-md-6">
+  <% @near_locations.each_with_index do |location, index| %>
+    <div class="location-item">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= index + 1 %>. <%= location.name %>
+        </div>
+        <div class="panel-body">
+          <strong>Address: </strong> <%= location.address %><br>
+          <strong>Hours: </strong> <%= location.hours %><br>
+          <strong>Current Wait Time:</strong><br>
+          <%= link_to "Driving Directions", driving_directions_link(@user, location), target:'_blank' %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
-
-
+</div>
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>

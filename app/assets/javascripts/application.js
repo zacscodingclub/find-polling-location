@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 
 $(function() {
@@ -21,21 +22,31 @@ $(function() {
 
 function initialize() {
     document.cookie = "lat_lng=;user_location=;";
+
+    $('#user_input_location').keypress(function() {
+        enableSubmit();
+    });
+
     $('#user_gps_location').change(function() {
         getGeoLocation();
-
-    })
+    });
 }
 
 function getGeoLocation() {
+  $('#gps-message').show();
   navigator.geolocation.getCurrentPosition(setGeoCookie, errorCallback );
 }
 
 function setGeoCookie(position) {
   var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
   document.cookie = "lat_lng=" + escape(cookie_val);
-  console.log(document.cookie);
+  enableSubmit();
 }
+
+function enableSubmit() {
+    $('#submit').prop('disabled', false);
+}
+
 function errorCallback(error) {
     console.log(error);
 }

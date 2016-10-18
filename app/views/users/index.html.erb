@@ -1,10 +1,23 @@
-<h1>Where Should You Vote?</h1>
-<%= form_for User.new do |f| %>
-  <%= f.label :input_location, "Where are you?" %>
-  <%= f.text_field :input_location  %>
+<h2>Where should you go to vote early?</h2>
+<p>Enter an address in Buncombe County or click the checkbox to find out the polling location nearest to you.</p><br>
 
-  <%= f.check_box :gps_location %>
-  <%= f.label :gps_location, "Use GPS" %>
-  <br>
-  <%= f.submit %>
-<% end %>
+<div class="col-md-4 col-md-offset-4">
+  <%= form_for User.new do |f| %>
+    <div class="form-group">
+      <%= f.label :input_location, "Street Address:"%>
+      <%= f.text_field :input_location, placeholder:'56 Ravenscroft Dr', class:"form-control" %>
+    </div>
+
+    <div class="checkbox">
+      <%= f.check_box :gps_location %>
+      <%= f.label :gps_location, "Use GPS" %>
+    </div>
+
+    <p id="gps-message" style="display:none;">
+      Trying to determine your location.  One moment please...
+    </p>
+
+    <%= f.submit "Go!", disabled:true, id:"submit", class:"btn btn-lg btn-primary" %>
+  <% end %>
+
+</div>
