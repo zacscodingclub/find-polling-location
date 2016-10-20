@@ -15,6 +15,13 @@ class PollingLocation < ApplicationRecord
     end
   end
 
+  def current_status
+    url = URI.parse(POLLING_LOCATIONS_URL)
+    req = Net::HTTP::Get.new(url.to_s)
+    res = Net::HTTP.start(url.host, url.port) {|http| http.request(req) }
+    locations = JSON.parse(res.body)
+  end
+
   def address
     "#{street}, #{cityStateZip}"
   end

@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def data
+    @locations = PollingLocation.current_status
+  end
+
   def index
 
   end
