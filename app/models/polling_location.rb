@@ -12,7 +12,6 @@ class PollingLocation < ApplicationRecord
     locations.each do |location|
       location[:uid] = user.id
       PollingLocation.create(location)
-      sleep(1.5)
     end
   end
 
