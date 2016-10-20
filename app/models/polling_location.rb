@@ -15,7 +15,7 @@ class PollingLocation < ApplicationRecord
     end
   end
 
-  def current_status
+  def self.current_status
     url = URI.parse(POLLING_LOCATIONS_URL)
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) {|http| http.request(req) }

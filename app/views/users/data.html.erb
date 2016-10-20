@@ -1,0 +1,18 @@
+<h1>Data</h1>
+
+<div class="col-md-6 col-md-offset-3">
+  <% @locations.each do |location| %>
+    <div class="location-item">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= location['name'] %>
+        </div>
+        <div class="panel-body">
+          <strong>Address: </strong> <%= "#{location['street']}, #{location['cityStateZip']} " %><br>
+          <strong>Hours: </strong> <%= location['hours'] %><br>
+          <strong>Number of people in line:</strong> <%= location['wait'] %><br>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
